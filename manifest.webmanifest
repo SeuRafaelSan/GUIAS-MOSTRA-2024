@@ -1,0 +1,12 @@
+{
+  "name": "Central dos Guias — Mostra SESI STEAM 2026",
+  "short_name": "Central dos Guias",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F8F9F7",
+  "theme_color": "#762E43",
+  "icons": [
+    { "src": "https://i.postimg.cc/YCFTHPcv/Whats-App-Image-2026-10-21-at-22-28-34.jpg", "sizes": "800x800", "type": "image/jpeg", "purpose": "any" }
+  ]
+}
