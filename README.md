@@ -7,16 +7,19 @@ Aplicativo web (mobile-first) para os guias do Ensino Médio:
 - **Mapa**: planta oficial publicada pela administração, com zoom por pinça.
 - **Administração** (toque na logo + PIN): cadastro de ônibus, confirmação de partida, publicação do mapa, histórico com indicadores, auditoria e relatórios Excel/Word.
 
-Sem etapa de build: HTML + CSS + módulos JavaScript. As bibliotecas (Firebase, Lucide, ExcelJS, docx) vêm de CDN.
+Projeto Vite (formato aceito pelo Google AI Studio), sem framework: o `index.tsx` só carrega `js/app.js`. As bibliotecas (Firebase, Lucide, ExcelJS, docx) vêm de CDN.
 
 ## Estrutura
 
 ```
-index.html, css/app.css, js/*.js     → aplicativo
-firestore.rules                      → regras de segurança do Firestore
-ferramentas/fontes_oficiais.mjs      → transcrição das bases enviadas pela coordenação
-ferramentas/montar_base.mjs          → consolida e gera dados_privados/base_oficial_estudantes.json
-dados_privados/                      → base com nomes de estudantes (fora do git)
+index.html, index.tsx, css/, js/     → aplicativo
+metadata.json                        → nome e descrição do app no AI Studio
+package.json, vite.config.ts, tsconfig.json → build (npm run dev / npm run build)
+public/sw.js, public/manifest.json   → notificações e ícone na tela inicial
+docs/firestore.rules.txt             → regras de segurança do Firestore
+ferramentas/montar_base.js           → gera public/dados_privados/base_oficial_estudantes.json
+ferramentas/fontes_oficiais.js       → transcrição das listas da coordenação (fora do git)
+public/dados_privados/               → base com nomes de estudantes (fora do git)
 ```
 
 ## Modos
@@ -33,16 +36,16 @@ dados_privados/                      → base com nomes de estudantes (fora do g
 3. **Authentication → Usuários → Adicionar usuário**: e-mail igual a `ADMIN_EMAIL` de `js/config.js` e, como senha, o PIN numérico do app (combinado com a coordenação; não registre o número neste repositório público). Se a quantidade de dígitos mudar, ajuste `PIN_DIGITOS` em `js/config.js`. Copie o **UID** criado.
 4. **Firestore Database → Criar banco** (modo produção, região `southamerica-east1`).
 5. **Firestore → Dados**: crie a coleção `admin_users` com um documento cujo **ID é o UID** do passo 3 (campo livre, ex.: `nome: "Guilherme Delfino"`).
-6. **Firestore → Regras**: cole o conteúdo de `firestore.rules` e publique.
+6. **Firestore → Regras**: cole o conteúdo de `docs/firestore.rules.txt` e publique.
 7. **Authentication → Configurações → Domínios autorizados**: adicione o domínio onde o app ficar hospedado.
-8. Abra o app, entre na administração e toque em **PUBLICAR BASE OFICIAL**. Se o arquivo `dados_privados/base_oficial_estudantes.json` não estiver hospedado, o botão pede para escolher o arquivo no aparelho.
+8. Abra o app, entre na administração e toque em **PUBLICAR BASE OFICIAL**. Se o arquivo `public/dados_privados/base_oficial_estudantes.json` não estiver hospedado, o botão pede para escolher o arquivo no aparelho.
 
 Coleções usadas: `students`, `student_presentations`, `school_visits`, `visit_groups`, `event_maps`, `admin_users`, `notifications`, `audit_logs`, `system_settings`.
 
 ## Atualizar a base de estudantes
 
-1. Edite `ferramentas/fontes_oficiais.mjs` (formato explicado no topo do arquivo).
-2. Rode `node ferramentas/montar_base.mjs`: o script valida as linhas, junta o mesmo aluno em várias oficinas e imprime um resumo.
+1. Edite `ferramentas/fontes_oficiais.js` (formato explicado no topo do arquivo).
+2. Rode `npm run base`: o script valida as linhas, junta o mesmo aluno em várias oficinas e imprime um resumo.
 3. Na administração aparece o aviso de versão nova; publique.
 
 ## Limites conhecidos
@@ -54,4 +57,9 @@ Coleções usadas: `students`, `student_presentations`, `school_visits`, `visit_
 
 ## Pré-visualizar localmente
 
-Sirva a pasta por HTTP (não funciona abrindo o arquivo direto) e acesse `http://localhost:PORTA/`.
+```
+npm install
+npm run dev
+```
+
+Abra `http://localhost:3000/`. Para gerar a versão de produção: `npm run build` (saída em `dist/`).

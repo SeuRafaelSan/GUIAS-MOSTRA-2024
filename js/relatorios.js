@@ -136,7 +136,7 @@ export async function baixarExcel(visitas, datas, ind) {
 
 // ════════════════════ WORD ════════════════════
 export async function baixarWord(visitas, datas, ind) {
-  const D = await import('https://esm.sh/docx@8.5.0');
+  const D = await import(/* @vite-ignore */ 'https://esm.sh/docx@8.5.0');
   const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ShadingType, AlignmentType, PageOrientation, BorderStyle, HeadingLevel, Footer, PageNumber } = D;
   const { ord, grupos } = separar(visitas, datas);
   const fonte = 'Calibri';

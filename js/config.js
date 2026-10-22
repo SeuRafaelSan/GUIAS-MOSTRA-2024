@@ -30,7 +30,7 @@ export const PROFESSORES_EXTRAS = [
 // Datas de referência da edição 2026 (editáveis e confirmadas no Histórico).
 export const DATAS_REFERENCIA = { dia1: '2026-10-22', dia2: '2026-10-23' };
 
-// Arquivo gerado por ferramentas/montar_base.mjs. Não publicar em repositório público.
+// Arquivo gerado por ferramentas/montar_base.js em public/dados_privados/. Não publicar em repositório público.
 export const ARQUIVO_BASE = 'dados_privados/base_oficial_estudantes.json';
 
 // Somente para a PRÉVIA LOCAL (sem Firebase). Com Firebase, quem valida é o Authentication.

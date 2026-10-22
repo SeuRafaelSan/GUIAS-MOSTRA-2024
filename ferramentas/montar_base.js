@@ -1,9 +1,9 @@
-// Consolida ferramentas/fontes_oficiais.mjs em dados_privados/base_oficial_estudantes.json.
-// Uso: node ferramentas/montar_base.mjs
+// Consolida ferramentas/fontes_oficiais.js em public/dados_privados/base_oficial_estudantes.json.
+// Uso: node ferramentas/montar_base.js
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { AREAS } from './fontes_oficiais.mjs';
+import { AREAS } from './fontes_oficiais.js';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const VERSAO = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '');
@@ -127,8 +127,8 @@ const saida = {
   students: listaEst,
   student_presentations: [...apresentacoes.values()],
 };
-mkdirSync(join(RAIZ, 'dados_privados'), { recursive: true });
-writeFileSync(join(RAIZ, 'dados_privados', 'base_oficial_estudantes.json'), JSON.stringify(saida));
+mkdirSync(join(RAIZ, 'public', 'dados_privados'), { recursive: true });
+writeFileSync(join(RAIZ, 'public', 'dados_privados', 'base_oficial_estudantes.json'), JSON.stringify(saida));
 
 const multi = listaEst.filter((e) => e.oficinas.length > 1 || [...apresentacoes.values()].filter((a) => a.studentId === e.id).length > 1);
 console.log(`Versão ${VERSAO}`);

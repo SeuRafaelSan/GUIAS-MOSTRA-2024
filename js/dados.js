@@ -108,7 +108,9 @@ class StoreFirebase {
 
   async iniciar() {
     const [{ initializeApp }, fs, au] = await Promise.all([
-      import(`${SDK}/firebase-app.js`), import(`${SDK}/firebase-firestore.js`), import(`${SDK}/firebase-auth.js`),
+      import(/* @vite-ignore */ `${SDK}/firebase-app.js`),
+      import(/* @vite-ignore */ `${SDK}/firebase-firestore.js`),
+      import(/* @vite-ignore */ `${SDK}/firebase-auth.js`),
     ]);
     this.fs = fs; this.au = au;
     const app = initializeApp(FIREBASE_CONFIG);

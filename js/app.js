@@ -1016,7 +1016,7 @@ async function publicarBase() {
   if (!json) {
     const inp = document.getElementById('arq-base');
     json = await new Promise((res) => { inp.onchange = async () => { try { res(JSON.parse(await inp.files[0].text())); } catch { res(null); } }; inp.click(); });
-    if (!json?.students || !json?.student_presentations) return toast('Arquivo inválido: não é a base gerada pelo montar_base.mjs.', 5000);
+    if (!json?.students || !json?.student_presentations) return toast('Arquivo inválido: não é a base gerada pelo montar_base.js.', 5000);
   }
   if (!(await confirmar('Publicar base oficial', `Publicar <b>${json.students.length}</b> estudantes e <b>${json.student_presentations.length}</b> apresentações (versão ${esc(json.versao)}) no Firebase? Registros antigos que não estão no arquivo serão removidos.`, 'PUBLICAR'))) return;
   const barra = alvo.querySelector('.progresso'); barra.classList.remove('oculto');

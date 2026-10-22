@@ -1,0 +1,16 @@
+{
+  "name": "central-dos-guias-steam-2026",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "base": "node ferramentas/montar_base.js"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
+  }
+}

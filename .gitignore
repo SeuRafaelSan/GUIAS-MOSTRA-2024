@@ -1,7 +1,11 @@
 # Base com nomes de estudantes: não publicar em repositório público.
 # Se o repositório for PRIVADO e a hospedagem precisar do arquivo para o botão
-# "Publicar base oficial", remova esta linha conscientemente.
+# "Publicar base oficial", remova estas linhas conscientemente.
+public/dados_privados/
 dados_privados/
 # Transcrição das listas oficiais (também contém os nomes dos estudantes).
-ferramentas/fontes_oficiais.mjs
+ferramentas/fontes_oficiais.js
+
 node_modules/
+dist/
+.env*
