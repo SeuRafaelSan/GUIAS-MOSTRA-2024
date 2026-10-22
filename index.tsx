@@ -1,2 +1,9 @@
-// Ponto de entrada do Vite / Google AI Studio. Toda a lógica está em js/app.js.
-import './js/app.js';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { App } from './src/App';
+
+ReactDOM.createRoot(document.getElementById('app')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

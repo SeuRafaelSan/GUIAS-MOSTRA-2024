@@ -9,7 +9,8 @@
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true,
-    "strict": false
+    "strict": false,
+    "jsx": "react-jsx"
   },
-  "include": ["index.tsx", "js", "vite.config.ts"]
+  "include": ["index.tsx", "src", "vite.config.ts"]
 }
