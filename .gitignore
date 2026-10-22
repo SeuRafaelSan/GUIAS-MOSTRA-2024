@@ -3,6 +3,8 @@
 # "Publicar base oficial", remova estas linhas conscientemente.
 public/dados_privados/
 dados_privados/
+para_ai_studio/
+public/base_oficial_estudantes.json
 # Transcrição das listas oficiais (também contém os nomes dos estudantes).
 ferramentas/fontes_oficiais.js
 
